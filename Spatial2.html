@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+            <meta charset="utf-8">
+                <title>Invasive Species</title>
+                <style>
+                
+                    html, body, #map-canvas {
+                        height: 100%;
+                        margin: 0px;
+                        padding: 0px;
+                    }
+                
+                    #right-side {
+                        height: 90%;
+                        float: left;
+                        width: 49%;
+                        margin: 0.5%;
+                    }
+                    
+                    #left-side {
+                        height: 90%;
+                        float: left;
+                        width: 49%;
+                        margin: 0.5%;
+                    }
+                
+                    #buttons-left {
+                        float: left;
+                        height: 6%;
+                        width: 49%;
+                        margin: 0.5%;
+                    }
+                    #buttons-right{
+                        float: right;
+                        height: 6%;
+                        width: 49%;
+                        margin: 0.5%;
+                    }
+                #footer{
+                    position: relative;
+                    text-align: center;
+                    color: black;
+                    height: 3%;
+                    width: 100%;
+                    bottom: -1%;
+                }
+                </style>
+                </head>
+    <div id="left-side">
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+        <script>
+            var ctaLayerLeft;
+            var ctaLayer1Left;
+            var ctaLayer2Left;
+            var ctaLayer3Left;
+            var ctaLayer4Left;
+            var ctaLayer5Left;
+            var ctaLayer6Left;
+            var ctaLayer7Left;
+            var ctaLayer8Left;
+            var mapLeft;
+            var countLeft = 0;
+            var countLeft1 = 0;
+            var countLeft2 = 0;
+            var countLeft3 = 0;
+            var countLeft4 = 0;
+            var countLeft5 = 0;
+            var countLeft6 = 0;
+            var countLeft7 = 0;
+            var countLeft8 = 0;
+            function initialize() {
+                var sanDiego = new google.maps.LatLng(32.7150,-117.1563889);
+                var mapOptions = {
+                    zoom: 11,
+                    center: sanDiego
+                    //mapTypeID: ROADMAP
+                    //overviewMapControl: false
+                }
+                
+                mapLeft = new google.maps.Map(document.getElementById('left-side'), mapOptions);
+                
+                ctaLayerLeft = new google.maps.KmlLayer({
+                                                        url: 'http://gis.ucmerced.edu/mappingFall14/rthiagarajan/SPATIAL/YellowStarThistle/YellowStarThistle.kmz',
+                                                        preserveViewport:true
+                                                    });
+                ctaLayerLeft.preserveViewport = false;
+                
+                ctaLayer1Left = new google.maps.KmlLayer({
+                                                         url: 'http://gis.ucmerced.edu/mappingFall14/rthiagarajan/SPATIAL/YellowStarThistle/ThickerRoads.kmz',
+                                                         preserveViewport:true
+                                                         });
+                ctaLayer1Left.preserveViewport = false;
+                
+                ctaLayer2Left = new google.maps.KmlLayer({
+                                                         url: 'http://gis.ucmerced.edu/mappingFall14/rthiagarajan/SPATIAL/YellowStarThistle/ClimateYellowStarThistle.kmz',
+                                                         preserveViewport:true
+                                                         });
+                ctaLayer2Left.preserveViewport = false;
+                
+                 
+                ctaLayer3Left = new google.maps.KmlLayer({
+                                                          url: 'http://gis.ucmerced.edu/mappingFall14/rthiagarajan/SPATIAL/Pepperweed/PerennialPepperweed.kmz',
+                                                          preserveViewport:true
+                                                         });
+                ctaLayer3Left.preserveViewport = false;
+                
+                ctaLayer4Left = new google.maps.KmlLayer({
+                                                         url: 'http://gis.ucmerced.edu/mappingFall14/rthiagarajan/SPATIAL/Pepperweed/streams.kmz',
+                                                         preserveViewport:true
+                                                         });
+                ctaLayer4Left.preserveViewport = false;
+                
+                ctaLayer5Left = new google.maps.KmlLayer({
+                                                         url: 'http://gis.ucmerced.edu/mappingFall14/rthiagarajan/SPATIAL/Pepperweed/DamINUN.kmz',
+                                                         preserveViewport:true
+                                                         });
+                ctaLayer5Left.preserveViewport = false;
+                
+                ctaLayer6Left = new google.maps.KmlLayer({
+                                                         url: 'http://gis.ucmerced.edu/mappingFall14/rthiagarajan/SPATIAL/Pepperweed/Lakes.kmz',
+                                                         preserveViewport:true
+                                                         });
+                ctaLayer6Left.preserveViewport = false;
+                
+                ctaLayer7Left = new google.maps.KmlLayer({
+                                                         url: 'http://gis.ucmerced.edu/mappingFall14/rthiagarajan/SPATIAL/Pepperweed/DamInundation.kmz',
+                                                         preserveViewport:true
+                                                         });
+                ctaLayer7Left.preserveViewport = false;
+                
+                ctaLayer8Left = new google.maps.KmlLayer({
+                                                         url: 'http://gis.ucmerced.edu/mappingFall14/rthiagarajan/SPATIAL/Pepperweed/ClimatePepperweed.kmz',
+                                                         preserveViewport:true
+                                                         });
+                ctaLayer8Left.preserveViewport = false;
+                
+                 
+                ctaLayerLeft.setMap(mapLeft);
+                ctaLayer1Left.setMap(mapLeft);
+                //ctaLayer2Left.setMap(mapLeft);
+                ctaLayer3Left.setMap(mapLeft);
+                ctaLayer4Left.setMap(mapLeft);
+                ctaLayer5Left.setMap(mapLeft);
+                ctaLayer6Left.setMap(mapLeft);
+                ctaLayer7Left.setMap(mapLeft);
+                //ctaLayer8Left.setMap(mapLeft);
+            }
+
+            function onOffLeft() {
+                if(countLeft){
+                    ctaLayerLeft.preserveViewport = true;
+                    ctaLayerLeft.setMap(mapLeft);
+                    countLeft--;
+                }
+                else{
+                    ctaLayerLeft.setMap(null);
+                    countLeft++;
+                }
+            }
+        function onOffLeft1() {
+            if(countLeft1){
+                ctaLayer1Left.preserveViewport = true;
+                ctaLayer1Left.setMap(mapLeft);
+                countLeft1--;
+            }
+            else{
+                ctaLayer1Left.setMap(null);
+                countLeft1++;
+            }
+        }
+        function onOffLeft2() {
+            if(countLeft2){
+                ctaLayer2Left.preserveViewport = true;
+                ctaLayer2Left.setMap(mapLeft);
+                countLeft2--;
+            }
+            else{
+                ctaLayer2Left.setMap(null);
+                countLeft2++;
+            }
+        }
+        function onOffLeft3() {
+            if(countLeft3){
+                ctaLayer3Left.preserveViewport = true;
+                ctaLayer3Left.setMap(mapLeft);
+                countLeft3--;
+            }
+            else{
+                ctaLayer3Left.setMap(null);
+                countLeft3++;
+            }
+        }
+        function onOffLeft4() {
+            if(countLeft4){
+                ctaLayer4Left.preserveViewport = true;
+                ctaLayer4Left.setMap(mapLeft);
+                countLeft4--;
+            }
+            else{
+                ctaLayer4Left.setMap(null);
+                countLeft4++;
+            }
+        }
+        function onOffLeft5() {
+            if(countLeft5){
+                ctaLayer5Left.preserveViewport = true;
+                ctaLayer5Left.setMap(mapLeft);
+                countLeft5--;
+            }
+            else{
+                ctaLayer5Left.setMap(null);
+                countLeft5++;
+            }
+        }
+        function onOffLeft6() {
+            if(countLeft6){
+                ctaLayer6Left.preserveViewport = true;
+                ctaLayer6Left.setMap(mapLeft);
+                countLeft6--;
+            }
+            else{
+                ctaLayer6Left.setMap(null);
+                countLeft6++;
+            }
+        }
+        function onOffLeft7() {
+            if(countLeft7){
+                ctaLayer7Left.preserveViewport = true;
+                ctaLayer7Left.setMap(mapLeft);
+                countLeft7--;
+            }
+            else{
+                ctaLayer7Left.setMap(null);
+                countLeft7++;
+            }
+        }
+        function onOffLeft8() {
+            if(countLeft8){
+                ctaLayer8Left.preserveViewport = true;
+                ctaLayer8Left.setMap(mapLeft);
+                countLeft8--;
+            }
+            else{
+                ctaLayer8Left.setMap(null);
+                countLeft8++;
+            }
+        }
+            google.maps.event.addDomListener(window, 'load', initialize);
+            
+        </script>
+    </div>
+    
+    <div id="right-side">
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+        <script>
+        var ctaLayerRight;
+        var ctaLayer1Right;
+        var ctaLayer2Right;
+        var ctaLayer3Right;
+        var ctaLayer4Right;
+        var ctaLayer5Right;
+        var ctaLayer6Right;
+        var ctaLayer7Right;
+        var ctaLayer8Right;
+        var mapRight;
+        var countRight = 0;
+        var countRight1 = 0;
+        var countRight2 = 0;
+        var countRight3 = 0;
+        var countRight4 = 0;
+        var countRight5 = 0;
+        var countRight6 = 0;
+        var countRight7 = 0;
+        var countRight8 = 0;
+        function initialize() {
+            var sanDiego = new google.maps.LatLng(32.7150,-117.1563889);
+            var mapOptions = {
+                zoom: 11,
+                center: sanDiego
+                //mapTypeID: ROADMAP
+                //overviewMapControl: false
+            }
+            
+            
+            mapRight = new google.maps.Map(document.getElementById('right-side'), mapOptions);
+            
+            ctaLayerRight = new google.maps.KmlLayer({
+            url: 'http://gis.ucmerced.edu/mappingFall14/rthiagarajan/SPATIAL/YellowStarThistle/YellowStarThistle.kmz',
+            preserveViewport:true
+            });
+            ctaLayerRight.preserveViewport = false;
+
+            ctaLayer1Right = new google.maps.KmlLayer({
+            url: 'http://gis.ucmerced.edu/mappingFall14/rthiagarajan/SPATIAL/YellowStarThistle/ThickerRoads.kmz',
+            preserveViewport:true
+            });
+            ctaLayer1Right.preserveViewport = false;
+
+            ctaLayer2Right = new google.maps.KmlLayer({
+            url: 'http://gis.ucmerced.edu/mappingFall14/rthiagarajan/SPATIAL/YellowStarThistle/ClimateYellowStarThistle.kmz',
+            preserveViewport:true
+            });
+            ctaLayer2Right.preserveViewport = false;
+            
+
+            ctaLayer3Right = new google.maps.KmlLayer({
+            url: 'http://gis.ucmerced.edu/mappingFall14/rthiagarajan/SPATIAL/Pepperweed/PerennialPepperweed.kmz',
+            preserveViewport:true
+            });
+            ctaLayer3Right.preserveViewport = false;
+
+            ctaLayer4Right = new google.maps.KmlLayer({
+            url: 'http://gis.ucmerced.edu/mappingFall14/rthiagarajan/SPATIAL/Pepperweed/streams.kmz',
+            preserveViewport:true
+            });
+            ctaLayer4Right.preserveViewport = false;
+
+            ctaLayer5Right = new google.maps.KmlLayer({
+            url: 'http://gis.ucmerced.edu/mappingFall14/rthiagarajan/SPATIAL/Pepperweed/DamINUN.kmz',
+            preserveViewport:true
+            });
+            ctaLayer5Right.preserveViewport = false;
+
+            ctaLayer6Right = new google.maps.KmlLayer({
+            url: 'http://gis.ucmerced.edu/mappingFall14/rthiagarajan/SPATIAL/Pepperweed/Lakes.kmz',
+            preserveViewport:true
+            });
+            ctaLayer6Right.preserveViewport = false;
+
+            ctaLayer7Right = new google.maps.KmlLayer({
+            url: 'http://gis.ucmerced.edu/mappingFall14/rthiagarajan/SPATIAL/Pepperweed/DamInundation.kmz',
+            preserveViewport:true
+            });
+            ctaLayer7Right.preserveViewport = false;
+
+            ctaLayer8Right = new google.maps.KmlLayer({
+            url: 'http://gis.ucmerced.edu/mappingFall14/rthiagarajan/SPATIAL/Pepperweed/ClimatePepperweed.kmz',
+            preserveViewport:true
+            });
+            ctaLayer8Right.preserveViewport = false;
+            
+
+            ctaLayerRight.setMap(mapRight);
+            ctaLayer1Right.setMap(mapRight);
+            //ctaLayer2Right.setMap(mapRight);
+            ctaLayer3Right.setMap(mapRight);
+            ctaLayer4Right.setMap(mapRight);
+            ctaLayer5Right.setMap(mapRight);
+            ctaLayer6Right.setMap(mapRight);
+            ctaLayer7Right.setMap(mapRight);
+            //ctaLayer8Right.setMap(mapRight);
+        }
+    
+        function addOverlayRight() {
+            ctaLayerRight.setMap(mapRight);
+        }
+        
+        // [START region_removal]
+        function removeOverlayRight() {
+            ctaLayerRight.setMap(null);
+        }
+        // [END region_removal]
+        
+        function onOffRight() {
+            if(countRight){
+                ctaLayerRight.preserveViewport = true;
+                ctaLayerRight.setMap(mapRight);
+                countRight--;
+            }
+            else{
+                ctaLayerRight.setMap(null);
+                countRight++;
+            }
+        }
+        function onOffRight1() {
+            if(countRight1){
+                ctaLayer1Right.preserveViewport = true;
+                ctaLayer1Right.setMap(mapRight);
+                countRight1--;
+            }
+            else{
+                ctaLayer1Right.setMap(null);
+                countRight1++;
+            }
+        }
+        function onOffRight2() {
+            if(countRight2){
+                ctaLayer2Right.preserveViewport = true;
+                ctaLayer2Right.setMap(mapRight);
+                countRight2--;
+            }
+            else{
+                ctaLayer2Right.setMap(null);
+                countRight2++;
+            }
+        }
+        function onOffRight3() {
+            if(countRight3){
+                ctaLayer3Right.preserveViewport = true;
+                ctaLayer3Right.setMap(mapRight);
+                countRight3--;
+            }
+            else{
+                ctaLayer3Right.setMap(null);
+                countRight3++;
+            }
+        }
+        function onOffRight4() {
+            if(countRight4){
+                ctaLayer4Right.preserveViewport = true;
+                ctaLayer4Right.setMap(mapRight);
+                countRight4--;
+            }
+            else{
+                ctaLayer4Right.setMap(null);
+                countRight4++;
+            }
+        }
+        function onOffRight5() {
+            if(countRight5){
+                ctaLayer5Right.preserveViewport = true;
+                ctaLayer5Right.setMap(mapRight);
+                countRight5--;
+            }
+            else{
+                ctaLayer5Right.setMap(null);
+                countRight5++;
+            }
+        }
+        function onOffRight6() {
+            if(countRight6){
+                ctaLayer6Right.preserveViewport = true;
+                ctaLayer6Right.setMap(mapRight);
+                countRight6--;
+            }
+            else{
+                ctaLayer6Right.setMap(null);
+                countRight6++;
+            }
+        }
+        function onOffRight7() {
+            if(countRight7){
+                ctaLayer7Right.preserveViewport = true;
+                ctaLayer7Right.setMap(mapRight);
+                countRight7--;
+            }
+            else{
+                ctaLayer7Right.setMap(null);
+                countRight7++;
+            }
+        }
+        function onOffRight8() {
+            if(countRight8){
+                ctaLayer8Right.preserveViewport = true;
+                ctaLayer8Right.setMap(mapRight);
+                countRight8--;
+            }
+            else{
+                ctaLayer8Right.setMap(null);
+                countRight8++;
+            }
+        }
+            google.maps.event.addDomListener(window, 'load', initialize);
+        
+        </script>
+    </div>
+    
+    <body>
+        <!---->
+        <div id="buttons-left">
+            <input onclick="onOffLeft();" type=button value="Yellow Starthistle">
+                <!-- damaged roads doesnt work -->
+            <input onclick="onOffLeft1();" type=button value="Damaged Roads">
+            <input onclick="onOffLeft2();" type=button value="Yellow Starthistle Climate">
+                <!-- Perennial Pepperweed doesnt work -->
+            <input onclick="onOffLeft3();" type=button value="Perennial Pepperweed">
+            <input onclick="onOffLeft4();" type=button value="Streams">
+                <!-- dam doesnt work -->
+            <input onclick="onOffLeft5();" type=button value="Dam">
+            <input onclick="onOffLeft6();" type=button value="Lakes">
+                <!-- dam inundation doesnt work -->
+            <input onclick="onOffLeft7();" type=button value="Dam Inundation">
+                <!-- pepperweed climate doesnt work -->
+            <input onclick="onOffLeft8();" type=button value="Pepperweed Climate">
+            
+        </div>
+        
+        <div id="buttons-right">
+            <input onclick="onOffRight();" type=button value="Yellow Starthistle">
+                <!-- damaged roads doesnt work -->
+            <input onclick="onOffRight1();" type=button value="Damaged Roads">
+            <input onclick="onOffRight2();" type=button value="Yellow Starthistle Climate">
+                <!-- Perennial Pepperweed doesnt work -->
+            <input onclick="onOffRight3();" type=button value="Perennial Pepperweed">
+            <input onclick="onOffRight4();" type=button value="Streams">
+                <!-- dam doesnt work -->
+            <input onclick="onOffRight5();" type=button value="Dam">
+            <input onclick="onOffRight6();" type=button value="Lakes">
+                <!-- dam inindation doesnt work -->
+            <input onclick="onOffRight7();" type=button value="Dam Inundation">
+                <!-- pepperweed climate doesnt work -->
+            <input onclick="onOffRight8();" type=button value="Pepperweed Climate">
+        </div>
+        <!--
+        <div id= "footer">
+            <p>Cang Truong, Justine Chuang, Roshini Thiagarajan</p>
+                <p><span> December 2014 </span></p>
+        </div>
+         -->
+    </body>
+</html>
